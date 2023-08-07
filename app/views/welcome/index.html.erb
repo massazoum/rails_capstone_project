@@ -1,0 +1,61 @@
+<div><div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Your App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .welcome-container {
+      text-align: center;
+      padding: 100px;
+    }
+
+    .welcome-title {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #008CBA;
+    }
+
+    .welcome-message {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .get-started-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #008CBA;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    .get-started-button a {
+      text-decoration: none;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-container">
+    <h1 class="welcome-title">Welcome to you</h1>
+    <p class="welcome-message">
+     the Recipe app keeps track of all your recipes, ingredients, and inventory. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe.
+    </p>
+ <div class="get-started-button"><%= link_to "Login", new_user_session_path, class:"bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 border border-gray-400 rounded shadow" %></div>
+
+ <div class="get-started-button"><%= link_to "Sign up", new_user_registration_path, class:"bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 border border-gray-400 rounded shadow" %></div>
+  </div>
+</body>
+</html>

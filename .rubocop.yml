@@ -8,6 +8,9 @@ AllCops:
     - "Rakefile"
     - "node_modules/**/*"
     - "test/**/*"
+    - "app/channels/**/*"
+    - "app/helpers/**/*"
+    - "app/jobs/**/*"
 
   DisplayCopNames: true
 

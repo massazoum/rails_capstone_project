@@ -1,0 +1,14 @@
+<h1>Inventories</h1>
+<div class="row">
+  <% @inventories.each do |inventory| %>
+    <div class="col-md-4">
+      <div class="inventory-card">
+        <%= link_to inventory_path(inventory), class: "card-link" do %>
+          <h5><%= inventory.name %></h5>
+          <p><%= inventory.description %></p>
+        <% end %>
+        <%= button_to "Remove", inventory, method: :delete, data: { confirm: "Are you sure you want to remove this inventory?" }, class: "remove-link", form: { "data-disable-with" => false } %>
+      </div>
+    </div>
+  <% end %>
+</div>

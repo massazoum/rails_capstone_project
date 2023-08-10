@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
   root "welcome#index"
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  # devise_for :users, controllers: {
-  #   sessions: 'users/sessions'
-  # }
-  # Defines the root path route ("/")
-  resources :recipes
+
+  resources :recipes do
+    member do
+      get 'shopping_list', to: 'recipes#shopping_list'
+    end
+  end
+
+  resources :inventories, only: [:index, :show, :destroy, :new, :create] do
+    resources :foods, only: [:new, :create]
+    resources :inventory_foods, only: [:new, :create, :destroy]
+  end
+
+  get '/inventories/:id', to: 'inventories#show', as: 'inventory_show'
+    
 end

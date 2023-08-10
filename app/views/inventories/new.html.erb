@@ -1,0 +1,16 @@
+<!-- app/views/inventories/new.html.erb -->
+<h1>Create Inventory</h1>
+
+<%= form_with(model: @inventory, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 4 %>
+  </div>
+  <div class="actions">
+    <%= form.submit "Create Inventory" %>
+  </div>
+<% end %>

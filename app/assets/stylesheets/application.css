@@ -12,28 +12,4 @@
  *
  *= require_tree .
  *= require_self
- */
-
-/*styles for inventory cards*/
-
-.inventory-card  {
-    border:  1px solid #ccc;
-    padding:  10px;
-    margin:  10px;
-    background-color:  #f7f7f7;
-    border-radius: 4px;
-}
-
-.inventory-card h5 {
-    font-size: 18px;
-}
-
-.inventory-card p  {
-    font-size:  14px;
-    color: #666;
-}
-
-.remove-link  {
-    color: red;
-}
-  
+ 

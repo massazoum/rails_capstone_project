@@ -11,10 +11,10 @@
   <tbody>
     <% @inventory.inventory_foods.each do |inventory_food| %>
       <tr>
-        <td><%= inventory_food.inspect %></td>
+        <td><%= inventory_food.food&.name %></td>
         <td><%= "#{inventory_food.quantity} #{inventory_food.food&.measurement}" %></td>
         <td>
-          <%= button_to "Remove", inventory_inventory_food_path(@inventory, inventory_food), method: :delete, data: { confirm: "Are you sure you want to remove this food?" }, class: "remove-link" %>
+          <%= button_to "Remove", inventory_show_path(@inventory), method: :delete, data: { confirm: "Are you sure you want to remove this food?" }, class: "remove-link" %>
         </td>
       </tr>
     <% end %>

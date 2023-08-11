@@ -6,4 +6,5 @@ class Food < ApplicationRecord
   has_many :inventories, through: :inventory_foods
 
   validates :name, presence: true, length: { maximum: 50 }
+  validates :price, presence: true
 end

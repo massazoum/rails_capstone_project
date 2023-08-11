@@ -1,50 +1,37 @@
 require 'rails_helper'
 
-RSpec.describe InventoryFood, type: :model do
-  let(:user) { User.create(name: 'John') }
-  let(:inventory) { Inventory.create(user:) }
-  let(:food) { Food.create(name: 'Cheese') }
+RSpec.describe RecipeFood, type: :model do
+  kay = User.new(name: 'Kay', email: 'kay2@gmail.com', password: 'Success')
 
-  describe 'validations' do
-    it 'should validate the presence of quantity' do
-      inventory_food = InventoryFood.new(inventory:, food:)
-      expect(inventory_food).to_not be_valid
-      expect(inventory_food.errors[:quantity]).to include("can't be blank")
-    end
+  recipe = Recipe.new(name: 'spice',
+                      preparation_time: '1 hour',
+                      cooking_time: '30mins',
+                      description: 'Description is here',
+                      public: true,
+                      user: kay)
 
-    it 'should validate that quantity is greater than or equal to 0' do
-      inventory_food = InventoryFood.new(inventory:, food:, quantity: -1)
-      expect(inventory_food).to_not be_valid
-      expect(inventory_food.errors[:quantity]).to include('must be greater than or equal to 0')
-    end
+  food = Food.new(name: 'Chicken',
+                  measurement: 'kg',
+                  price: 45)
 
-    it 'should validate the presence of inventory' do
-      inventory_food = InventoryFood.new(food:, quantity: 100)
-      expect(inventory_food).to_not be_valid
-      expect(inventory_food.errors[:inventory_id]).to include("can't be blank")
-    end
-
-    it 'should validate the presence of food' do
-      inventory_food = InventoryFood.new(inventory:, quantity: 100)
-      expect(inventory_food).to_not be_valid
-      expect(inventory_food.errors[:food_id]).to include("can't be blank")
-    end
+  subject do
+    RecipeFood.new(recipe_id: recipe.id, food_id: food.id, quantity: 5)
   end
 
-  describe 'associations' do
-    it 'should belong to an inventory' do
-      expect(InventoryFood.reflect_on_association(:inventory).macro).to eq(:belongs_to)
-    end
+  before { subject.save }
 
-    it 'should belong to a food' do
-      expect(InventoryFood.reflect_on_association(:food).macro).to eq(:belongs_to)
-    end
+  it 'should have a recipe' do
+    subject.recipe_id = nil
+    expect(subject).to_not be_valid
   end
 
-  describe 'instance methods' do
-    it '#quantity should return the quantity' do
-      inventory_food = InventoryFood.new(inventory:, quantity: 100)
-      expect(inventory_food.quantity).to eq(100)
-    end
+  it 'should have a food' do
+    subject.food_id = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'should have a number' do
+    subject.quantity = 'abc'
+    expect(subject).to_not be_valid
   end
 end

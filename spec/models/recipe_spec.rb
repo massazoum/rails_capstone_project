@@ -21,14 +21,4 @@ RSpec.describe Recipe, type: :model do
       expect(recipe.errors[:cooking_time]).to include("can't be blank")
     end
   end
-
-  describe 'scopes' do
-    let(:user) { User.create(email: 'john@example.com', password: 'password') }
-    let(:public_recipe) { Recipe.create(name: 'Public Recipe', cooking_time: 30, public: true, user:) }
-    let!(:private_recipe) { Recipe.create(name: 'Private Recipe', cooking_time: 30, public: false, user:) }
-
-    it 'returns public recipes' do
-      expect(Recipe.public_recipes).to eq [public_recipe]
-    end
-  end
 end

@@ -1,0 +1,11 @@
+<!-- app/views/recipes/_add_food_form.html.erb -->
+<h2>Add Food to Recipe</h2>
+<%= form_with(model: @recipe_food, url: recipe_recipe_foods_path(@recipe)) do |form| %>
+  <!-- Form fields for adding food to the recipe -->
+  <%= form.label :food_id, 'Select Food' %>
+  <%= form.collection_select :food_id, Food.all, :id, :name %>
+  
+  <%= form.label :quantity %>
+  <%= form.number_field :quantity %>
+  <%= form.submit 'Add Food to Recipe' %>
+<% end %>

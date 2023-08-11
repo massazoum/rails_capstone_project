@@ -1,0 +1,19 @@
+<h1>Inventory Shopping List</h1>
+​
+<p><strong>Recipe:</strong> <%= @recipe.name %></p>
+<p><strong>Inventory:</strong> <%= @inventory.name %></p>
+​
+<% if @missing_foods.any? %>
+  <h2>Missing Foods:</h2>
+  <ul>
+    <% @missing_foods.each do |food| %>
+      <li><%= food.name %> - <%= number_to_currency(food.price) %></li>
+    <% end %>
+  </ul>
+  <p><strong>Total Missing Items:</strong> <%= @total_count %></p>
+  <p><strong>Total Missing Price:</strong> <%= number_to_currency(@total_price) %></p>
+<% else %>
+  <p>No missing food items.</p>
+<% end %>
+​
+<%= link_to 'Back to Inventory', inventory_path(@inventory) %>

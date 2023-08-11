@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :recoverable, :validatable
   has_many :recipes
   has_many :inventories
+  
 end

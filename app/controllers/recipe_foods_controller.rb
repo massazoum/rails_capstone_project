@@ -18,7 +18,7 @@ class RecipeFoodsController < ApplicationController
 
   def destroy
     @recipe = RecipeFood.find_by(food_id: params[:id], recipe_id: params[:recipe_id])
-    p @recipe.recipe_id 
+    p @recipe.recipe_id
     p @recipe.food_id
     if @recipe.destroy
       redirect_to(request.referrer || root_path)
@@ -30,6 +30,6 @@ class RecipeFoodsController < ApplicationController
   private
 
   def recipe_foods_params
-    params.require(:recipe_food).permit(:food_id, :quantity )
+    params.require(:recipe_food).permit(:food_id, :quantity)
   end
 end

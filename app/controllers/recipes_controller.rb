@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
   def show
     # @foods = Food.all
     @recipe = Recipe.find(params[:id])
-    @food = Food.new 
+    @food = Food.new
     @foods = Food.joins(:recipe_foods).where(recipe_foods: { recipe_id: @recipe.id }).includes([:recipe_foods])
   end
 
@@ -34,8 +34,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @recipe = Recipe.find(params[:id])
@@ -51,7 +50,7 @@ class RecipesController < ApplicationController
     @recipe.destroy
     redirect_to recipes_path, notice: 'Recipe was successfully destroyed.'
   end
-  
+
   private
 
   def set_recipe

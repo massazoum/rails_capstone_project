@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>M</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <style>
+nav {
+  background-color: #333;
+  color: white;
+  height:40px;
+  padding-top:15px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content:center ;
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-size:15px
+  weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.user {
+position: absolute ;
+color:white;
+top:15px;
+left:10px
+}
+
+    </style>
+  </head>
+
+  <body>
+  <nav>
+ 
+  <ul>
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Recipes', recipes_path %></li>
+      <li> <%= link_to 'Public Recipes', public_index_recipes_path %></li>
+    <li><%= link_to 'Inventories', inventories_path %></li>
+    <li><%= link_to 'Foods', foods_path %></li>
+  
+  </ul>
+</nav>
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+  <div class="container">
+  <%= yield %>
+</div>
+  </body>
+</html>

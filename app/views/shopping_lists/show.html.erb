@@ -1,0 +1,20 @@
+<!-- app/views/shopping_lists/show.html.erb -->
+<%= puts "DEBUG: @missing_foods=#{@missing_foods.inspect}" %>
+<%= puts "DEBUG: @total_items=#{@total_items.inspect}" %>
+<%= puts "DEBUG: @total_price=#{@total_price.inspect}" %>
+<%= puts "DEBUG: @inventory_foods=#{@inventory_foods.inspect}" %>
+<h1>Shopping List</h1>
+
+<% if @missing_foods.empty? %>
+  <p>No missing items! Your inventory has everything you need.</p>
+<% else %>
+  <p>Total missing items: <%= @total_items %></p>
+  <p>Total price of missing items: <%= @total_price %></p>
+
+  <h2>Missing Foods:</h2>
+  <ul>
+    <% @missing_foods.each do |missing_food| %>
+      <li><%= "#{missing_food.food.name} (#{missing_food.quantity} #{missing_food.food.measurement}) - $#{(missing_food.food.price * (missing_food.quantity - @inventory_foods.find_by(food: missing_food.food)&.quantity.to_f)).round(2)}" %></li>
+    <% end %>
+  </ul>
+<% end %>

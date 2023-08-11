@@ -6,5 +6,37 @@ Rails.application.routes.draw do
   #   sessions: 'users/sessions'
   # }
   # Defines the root path route ("/")
-  resources :recipes
+
+  # resources :recipes do
+  #   resources :recipe_foods, only: [:new, :create]
+  # end
+
+
+  resources :inventories do
+    resources :inventory_foods, only: %i[new create destroy]
+
+    member do
+      post 'create_food'
+    end
+    member do
+      get 'shopping_list'
+    end
+  end
+
+  resources :recipes do
+    resources :recipe_foods, only: %i[new create destroy]
+    resources :foods, only: [] do
+      post 'create_for_recipe'
+    end
+    collection do
+          get 'public_index', to: 'recipes#public_index'
+        end
+  end
+
+get 'shopping_list', to: 'shopping_lists#index', as: :shopping_list
+
+
+  resources :foods
+
+
 end

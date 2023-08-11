@@ -1,0 +1,8 @@
+<!-- app/views/foods/show.html.erb -->
+<h1><%= @food.name %></h1>
+
+<p><strong>Measurement:</strong> <%= @food.measurement %></p>
+<p><strong>Price:</strong> <%= @food.price %></p>
+
+<%= link_to 'Edit', edit_food_path(@food) %> |
+<%= link_to 'Back to Food List', foods_path %>

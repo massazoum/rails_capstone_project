@@ -1,0 +1,9 @@
+<% total_missing_food_items = @recipe_foods.sum { |recipe_food| recipe_food.quantity.to_i } %>
+<h2>Total Missing Food Items: <%= total_missing_food_items %></h2>
+
+<% total_missing_food_price = @recipe_foods.sum do |recipe_food|
+  food_price = recipe_food.food&.price || 0
+  food_quantity = recipe_food.quantity.to_i
+  food_price * food_quantity
+end %>
+<h2>Total Missing Food Price: $<%= total_missing_food_price %></h2>

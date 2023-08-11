@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipes</title>
+  <style>
+.form-Actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+ .table {
+    min-width: 60vw;
+    border-collapse: collapse;
+    margin-top: 10px
+  }
+
+  .table th, .table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  }
+
+.form-submitt {
+  background-color: #008cba;
+  color: #fff;
+  font-size: 13px;
+  padding :7px ;
+  margin :3px ;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-creatnew {
+  background-color: #002cba;
+  color: #fff;
+  font-size: 13px;
+  padding :7px ;
+  margin :3px ;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom : 20px ;
+}
+
+.form-submit:hover {
+  background-color: #006799;
+}
+</style>
+</head>
+<body >
+<h1>Food List</h1>
+<%= link_to 'New Food', new_food_path , class: "form-creatnew" %>
+<table border="1" class="table">
+ <tr>
+    <th>Food</th>
+    <th>Measurement unit</th>
+    <th>Unit price</th>
+    <th>Actions</th>
+  </tr>
+  <% @foods.each do |food| %>
+  <tr>
+    <td>  <%= link_to food.name, food_path(food) %></td>
+    <td> <%=food.measurement %></td>
+    <td> <%=food.price %></td>
+    <td><div class="form-actions"><%= button_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure?' },class: "form-submitt"%></div></td>
+  </tr>
+  <% end %>
+</table>
+
+
+
+
+
+ 

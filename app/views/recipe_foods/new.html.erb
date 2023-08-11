@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Form</title>
+  <style>
+   .form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.form-header {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-submit {
+  background-color: #008cba;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-submit:hover {
+  background-color: #006799;
+}
+
+.form-errors {
+  color: #c00;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.form-links {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.form-links a {
+  color: #666;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.form-links a:hover {
+  color: #333;
+}
+
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <div class="form-header">
+
+
+<% if @recipe_foods.errors.any? %>
+  <div>
+    <p><%= pluralize(@recipe_foods.errors.count, "error") %> found:</p>
+
+    <ul>
+      <% @recipe_foods.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: @recipe_foods, url: "/recipes/#{params[:recipe_id]}/recipe_foods", method: :post do |form| %>
+<h1>Add Ingredient for <%= @recipe_name %></h1>
+<div class="d-flex flex-column mb-3">
+<div class="form-field">
+<%= form.label :quantity,  class: "form-label" %>
+<%= form.number_field :quantity, class: "form-input" %>
+</div>
+<div class="form-field">
+<%= form.label :food_id , class: "form-label"%>
+<%= form.select :food_id, Food.all.map {|f| [f.name, f.id]}, class: "form-input" %>
+</div>
+<div class="form-actions">
+<%= form.submit 'Add Ingredient',  class: "form-submit" %>
+</div>
+<% end %>
+ </div>
+</body>
+</html>

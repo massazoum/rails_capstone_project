@@ -1,0 +1,129 @@
+<!-- app/views/recipes/show.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe</title>
+  <style>
+  .form-Actions {
+  text-align: center;
+  margin-top: 20px;
+}
+ .table {
+    min-width: 60vw;
+    border-collapse: collapse;
+    margin-top: 10px
+  }
+  .table th, .table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  }
+.form-submitt {
+  background-color: #008cba;
+  color: #fff;
+  font-size: 13px;
+  padding :7px ;
+  margin :3px ;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.form-creatnew {
+  background-color: #002cba;
+  color: #fff;
+  font-size: 13px;
+  padding :7px ;
+  margin :3px ;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom : 20px ;
+}
+.form-submit:hover {
+  background-color: #006799;
+}
+.name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center ;
+}
+.frameMain {
+ display: flex;
+ justify-content: space-between;
+}
+  </style>
+</head>
+<body>
+<div class="name"> <h1><%= @recipe.name %></h1> </div>
+<div class="frameMain">
+  <div>
+  <p>
+  <strong>Preparation Time:</strong>
+  <%= @recipe.preparation_time %> minutes
+</p>
+<p>
+  <strong>Cooking Time:</strong>
+  <%= @recipe.cooking_time %> minutes
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @recipe.description %>
+</p>
+  </div>
+  <div>
+    <p>
+  <strong>Public:</strong>
+  <%= @recipe.public? ? 'Yes' : 'No' %>
+</p>
+<%= form_with(model: @recipe, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :public %>
+    <%= form.check_box :public %>
+  </div>
+  <div class="actions">
+    <%= form.submit 'Toggle Visibility' %>
+  </div>
+<% end %>
+  </div>
+</div>
+<hr>
+<% if @recipe.public? || current_user == @recipe.user %>
+  <!-- Display recipe details as in wireframe -->
+<% end %>
+<%= link_to 'Edit', edit_recipe_path(@recipe) %>
+<%= link_to 'Back', recipes_path %>
+<% if current_user == @recipe.user %>
+<% end %>
+<hr>
+<button class="add-ingredient"><%= link_to 'Add Ingredient', "/recipes/#{@recipe.id}/recipe_foods/new" %></button>
+<h2>Foods in Recipe:</h2>
+<div class="row">
+    <% if @foods.length.positive?%>
+    <table class="table">
+      <tr class="foods__table-header-row">
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Actions</th>
+      </tr>
+      <tbody>
+        <% @foods.each do |food|  %>
+          <tr id="<%= dom_id food %>", class="foods__table-body-row">
+             <td><%= food.name %></td>
+            <td><%= food.recipe_foods.select {|recipe| recipe.food_id == food.id}[0].quantity%> <%= food.measurement%></td>
+            <td>$<%= food.price%></td>
+            <% if current_user.id == @recipe.user.id%>
+            <td>
+                <%= button_to "Remove", recipe_recipe_food_path(@recipe.id, food.id), method: :delete ,class: "form-submitt" %>
+            </td> 
+            <% end %>
+          </tr>
+        <% end %>
+      <tbody>
+    </table>
+  <% else %>
+    <p>No Ingredients to show. Add an ingredient from the button above</p>
+  <% end %>
+    </div>
+  </div>
+<body>

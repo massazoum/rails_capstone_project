@@ -1,9 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipes</title>
+  <style>
+.form-Actions {
+  text-align: center;
+  margin-top: 20px;
+}
+.form-submitt {
+  background-color: #008cba;
+  color: #fff;
+  font-size: 13px;
+  padding :7px ;
+  margin :3px ;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.form-submitNamet {
+  font-size: 18px ;
+  font-weight: bold ;
+}
+.form-creatnew {
+  background-color: #002cba;
+  color: #fff;
+  font-size: 13px;
+  padding :7px ;
+  margin :3px ;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom : 20px ;
+}
+.form-submit:hover {
+  background-color: #006799;
+}
+.form-links a {
+  color: #666;
+  text-decoration: none;
+  margin: 0 10px;
+}
+.form-links a:hover {
+  color: #333;
+}
+.cardrecipe {
+  display :flex;
+  flex-direction: row;
+  width: 95vw;
+  height: auto;
+  margin-top: 15px;
+  padding-left: 15px; 
+  padding-top:10px; 
+  padding-bottom:10px;
+  border: 3px solid #12151a 
+}
+.cardrecipeBtn {
+  display: flex ;
+  flex-direction: row;
+}
+.cardrecipeName {
+color: black;
+font-size: 18px ;
+margin-bottom: 5px ;
+}
+.cardrecipeName a {
+text-decoration: none;
+}
+.cardrecipeDescription {
+  display: flex;
+  flex-direction: column;
+  margin-left :25px ;
+  row-gab:10px;
+}
+
+.cooking_time {
+  margin-top: 20px
+}
+  </style>
+</head>
+<body>
 <h1>Public Recipe List</h1>
 <ul>
   <% @public_recipes.each do |recipe| %>
-    <li>
-      <%= link_to recipe.name, recipe_path(recipe) %>
-    </li>
+<div class="cardrecipe">
+  <div>
+    <div class="cardrecipeName"> <%= link_to recipe.name, recipe, class: "form-submitNamet" %></div>
+  <div class="cardrecipeBtn">
+    <p>
+  <strong>Preparation Time:</strong>
+  <%= recipe.preparation_time %> hours
+</p>
+  </div>
+  </div>
+  <div class="cardrecipeDescription"><%= recipe.description %>
+  <div class="cooking_time">
+  <strong>Cooking Time:</strong>
+  <%= recipe.cooking_time %> hours
+</div></div>
+</div> 
   <% end %>
 </ul>
 <%= link_to 'Back to All Recipes', recipes_path %>
+<body>

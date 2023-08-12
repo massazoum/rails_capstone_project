@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Form</title>
+</head>
+<body>
+  <div class="form-container">
+    <div class="form-header">
+      Create Recipe
+    </div>
+                
+    <%= form_with(model: recipe, local: true) do |form| %>
+      <% if recipe.errors.any? %>
+        <div class="form-errors">
+          <h2><%= pluralize(recipe.errors.count, 'error') %> prohibited this recipe from being saved:</h2>
+          <ul>
+            <% recipe.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-field">
+        <%= form.label :name, class: "form-label" %>
+        <%= form.text_field :name, class: "form-input" %>
+      </div>
+      <div class="form-field">
+        <%= form.label :preparation_time, class: "form-label" %>
+        <%= form.number_field :preparation_time, class: "form-input" %>
+      </div>
+      <div class="form-field">
+        <%= form.label :cooking_time, class: "form-label" %>
+        <%= form.number_field :cooking_time, class: "form-input" %>
+      </div>
+      <div class="form-field">
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_area :description, class: "form-input" %>
+      </div>
+      <div class="form-field">
+        <%= form.label :public, class: "form-label" %>
+        <%= form.check_box :public, class: "form-input" %>
+      </div>
+      <div class="form-actions">
+        <%= form.submit "Update Recipe", class: "form-submit" %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>

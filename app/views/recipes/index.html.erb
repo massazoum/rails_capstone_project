@@ -1,0 +1,18 @@
+<div class="Public">
+<h1>Recipes</h1>
+</div>
+<%= link_to 'New Recipe', new_recipe_path , class: "form-creatnew" %>
+  <% @recipes.each do |recipe| %>
+<div class="cardrecipe">
+  <div>
+    <div class="cardrecipeName"> <%= link_to recipe.name, recipe, class: "form-submitNamet" %></div>
+  <div class="cardrecipeBtn">
+     <div class="form-actions">
+ <%= button_to "Destroy", recipe, method: :delete, data: { confirm: "Are you sure?" }, class: "form-submitt" %>
+      </div> |
+  </div>
+  </div>
+  <div class="cardrecipeDescription"><%= recipe.description %></div>
+</div> 
+  <% end %>
+

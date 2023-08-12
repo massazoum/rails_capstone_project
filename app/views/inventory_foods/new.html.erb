@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Form</title>
+</head>
+<body>
+  <div class="form-container">
+
+<% if @inventory_foods.errors.any? %>
+  <div>
+    <p><%= pluralize(@inventory_foods.errors.count, "error") %> found:</p>
+
+    <ul>
+      <% @inventory_foods.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: @inventory_foods, url: "/inventories/#{params[:inventory_id]}/inventory_foods", method: :post do |form| %>
+<h1>Add Ingredient for <%= @inventory_name %></h1>
+<div class="d-flex flex-column mb-3">
+<div class="form-field">
+<%= form.label :quantity , class: "form-label" %>
+<%= form.number_field :quantity, class: "form-input" %>
+</div>
+<div class="form-field">
+<%= form.label :food_id, class: "form-label"%>
+<%= form.select :food_id, Food.all.map {|f| [f.name, f.id]}, class: "form-input" %>
+</div>
+<div class="form-field">
+<%= form.submit 'Add Food', class: "form-submit"  %>
+</div>
+<% end %>
+  </div>
+</body>
+</html>

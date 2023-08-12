@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipes</title>
+
+</head>
+<body>
+<div class="Public">
+<h1>Public Recipe List</h1>
+</div>
+
+<ul>
+  <% @public_recipes.each do |recipe| %>
+<div class="cardrecipe">
+  <div>
+    <div class="cardrecipeName"> <%= link_to recipe.name, recipe, class: "form-submitNamet" %></div>
+  <div class="cardrecipeBtn">
+    <p>
+  <strong>Preparation Time:</strong>
+  <%= recipe.preparation_time %> hours
+</p>
+  </div>
+  </div>
+  <div class="cardrecipeDescription"><%= recipe.description %>
+  <div class="cooking_time">
+  <strong>Cooking Time:</strong>
+  <%= recipe.cooking_time %> hours
+</div></div>
+</div> 
+  <% end %>
+</ul>
+<%= link_to 'Back to All Recipes', recipes_path %>
+<body>

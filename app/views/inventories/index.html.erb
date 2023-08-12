@@ -1,0 +1,18 @@
+
+<div class="Public">
+<h1>Inventories</h1>
+</div>
+<%= link_to 'New Inventory', new_inventory_path ,class: "form-creatnew" %>
+<% @inventories.each do |inventory| %>
+ <div class="cardrecipe">
+  <div>
+    <div class="cardrecipeName"> <%= link_to inventory.name ,inventory, class: "form-submitNamet" %></div>
+  <div class="cardrecipeBtn">
+     <div class="form-actions">
+ <%= button_to "Delete", inventory, method: :delete, data: { confirm: "Are you sure?" }, class: "form-submitt" %>
+      </div> |
+  </div>
+  </div>
+  <div class="cardrecipeDescription"><%=inventory.description %></div>
+</div> 
+  <% end %>

@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipes</title>
+</head>
+<body >
+<% total_missing_food_items = @recipe_foods.sum { |recipe_food| recipe_food.quantity.to_i } %>
+<h2>Total Missing Food Items: <%= total_missing_food_items %></h2>
+
+<table  class="table">
+  <thead>
+    <tr>
+      <th>Food Item</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipe_foods.each do |recipe_food| %>
+      <% available_inventory_food = @inventory_foods.find { |inventory_food| inventory_food.food_id == recipe_food.food_id } %>
+      <% if available_inventory_food.nil? || available_inventory_food.quantity.to_i < recipe_food.quantity.to_i %>
+        <tr>
+          <td><%= recipe_food.food.name %></td>
+          <td><%= recipe_food.quantity.to_i - (available_inventory_food&.quantity.to_i || 0) %></td>
+          <td>$<%= recipe_food.food.price %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<% total_missing_food_price = @recipe_foods.sum do |recipe_food|
+  food_price = recipe_food.food&.price || 0
+  available_inventory_food = @inventory_foods.find { |inventory_food| inventory_food.food_id == recipe_food.food_id }
+  food_quantity = [recipe_food.quantity.to_i - (available_inventory_food&.quantity.to_i || 0), 0].max
+  food_price * food_quantity
+end %>
+<h2>Total Missing Food Price: $<%= total_missing_food_price %></h2>
+</body>

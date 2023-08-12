@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Form</title>
+</head>
+<body>
+<div class="form-container">
+    <div class="form-header">
+     Etid Inventory
+    </div>
+    
+<%= form_with(model: inventory, local: true) do |form| %>
+  <% if inventory.errors.any? %>
+    <!-- Error messages display if there are any form errors -->
+  <% end %>
+  <div class="form-field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-input" %>
+  </div>
+  <div class="form-field">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-input" %>
+  </div>
+  <div class="form-actions">
+    <%= form.submit "Save", class: "form-submit" %>
+  </div>
+<% end %>
+</div>
+</body>
+</html>

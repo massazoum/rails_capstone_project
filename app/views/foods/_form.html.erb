@@ -1,0 +1,30 @@
+<!-- app/views/foods/_form.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Form</title>
+  <style>
+  </style>
+</head>
+<body>
+  <div class="form-container">
+<%= form_with(model: food, local: true) do |form| %>
+  <div class="form-field">
+  <%= form.label :name ,  class: "form-label"%>
+  <%= form.text_field :name , class: "form-input" %>
+</div>
+  <div class="form-field">
+  <%= form.label :measurement , class: "form-label" %>
+  <%= form.text_field :measurement ,class: "form-input" %>
+</div>
+  <div class="form-field">
+  <%= form.label :price , class: "form-label" %>
+  <%= form.number_field :price ,class: "form-input" %>
+</div>
+  <div class="actions">
+    <%= form.submit 'Create Food' ,class: "form-submit"  %>
+  </div>
+<% end %>
+  </div>
+</body>
+</html>

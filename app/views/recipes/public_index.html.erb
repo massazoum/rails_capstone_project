@@ -76,10 +76,18 @@ text-decoration: none;
 .cooking_time {
   margin-top: 20px
 }
+
+.Public {
+  display:flex ;
+  justify-content:center ;
+}
   </style>
 </head>
 <body>
+<div class="Public">
 <h1>Public Recipe List</h1>
+</div>
+
 <ul>
   <% @public_recipes.each do |recipe| %>
 <div class="cardrecipe">

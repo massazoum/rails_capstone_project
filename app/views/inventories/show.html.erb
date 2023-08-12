@@ -48,10 +48,18 @@
   display:flex ;
   justify-content:right
 }
+
+.inventory_name {
+  display:flex;
+  justify-content:center;
+}
 </style>
 </head>
 <body >
+<div class="inventory_name"> 
 <h1><%= @inventory.name %></h1>
+</div>
+
 <div class="inventorydiv"><button><%= link_to 'Add Food', "/inventories/#{@inventory.id}/inventory_foods/new"%></button> </div>
 <hr>
 <div class="row">

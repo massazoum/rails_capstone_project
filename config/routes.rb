@@ -6,12 +6,6 @@ Rails.application.routes.draw do
   #   sessions: 'users/sessions'
   # }
   # Defines the root path route ("/")
-
-  # resources :recipes do
-  #   resources :recipe_foods, only: [:new, :create]
-  # end
-
-
   resources :inventories do
     resources :inventory_foods, only: %i[new create destroy]
 
@@ -32,11 +26,6 @@ Rails.application.routes.draw do
           get 'public_index', to: 'recipes#public_index'
         end
   end
-
 get 'shopping_list', to: 'shopping_lists#index', as: :shopping_list
-
-
-  resources :foods
-
-
+resources :foods, except: [:update]
 end

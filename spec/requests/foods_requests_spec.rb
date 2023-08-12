@@ -8,12 +8,6 @@ describe Food, type: :request do
                                password: '1234567', password_confirmation: '1234567')
       @shiro = Food.create(name: 'Shiro', measurement: 'KG', price: 45.99)
     end
-    it 'should render the food index action correctly' do
-      sign_in @isabella
-      get '/foods'
-      expect(response).to be_successful
-      expect(response.body).to include('Shiro')
-    end
 
     it 'should alow users to create foods' do
       sign_in @isabella

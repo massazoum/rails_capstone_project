@@ -12,8 +12,6 @@ class InventoriesController < ApplicationController
   end
 
   def show
-    # @inventory = Inventory.find(params[:id])
-    # @recipe = Recipe.find(params[:recipe_id]) if params[:recipe_id]
     @inventory = Inventory.find(params[:id])
     @food = Food.new
     @foods = Food.joins(:inventory_foods).where(inventory_foods: { inventory_id: @inventory.id }).includes([:inventory_foods])

@@ -9,7 +9,9 @@
   margin-top: 20px;
 }
  .table {
-    min-width: 60vw;
+  min-width:  90vw;
+    margin-left:5vw;
+    margin-right:5vw;
     border-collapse: collapse;
     margin-top: 10px
   }
@@ -51,6 +53,11 @@
  display: flex;
  justify-content: space-between;
 }
+
+.recipediv {
+  display:flex ;
+  justify-content:right
+}
   </style>
 </head>
 <body>
@@ -86,7 +93,6 @@
 <% end %>
   </div>
 </div>
-<hr>
 <% if @recipe.public? || current_user == @recipe.user %>
   <!-- Display recipe details as in wireframe -->
 <% end %>
@@ -95,8 +101,9 @@
 <% if current_user == @recipe.user %>
 <% end %>
 <hr>
+<div class="recipediv">
 <button class="add-ingredient"><%= link_to 'Add Ingredient', "/recipes/#{@recipe.id}/recipe_foods/new" %></button>
-<h2>Foods in Recipe:</h2>
+</div>
 <div class="row">
     <% if @foods.length.positive?%>
     <table class="table">

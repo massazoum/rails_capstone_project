@@ -8,7 +8,9 @@
   margin-top: 20px;
 }
  .table {
-    min-width: 60vw;
+    min-width:  90vw;
+    margin-left:5vw;
+    margin-right:5vw;
     border-collapse: collapse;
     margin-top: 10px
   }
@@ -41,14 +43,17 @@
 .form-submit:hover {
   background-color: #006799;
 }
+
+.inventorydiv {
+  display:flex ;
+  justify-content:right
+}
 </style>
 </head>
 <body >
 <h1><%= @inventory.name %></h1>
-<p><strong>Description:</strong> <%= @inventory.description %></p>
+<div class="inventorydiv"><button><%= link_to 'Add Food', "/inventories/#{@inventory.id}/inventory_foods/new"%></button> </div>
 <hr>
-<button><%= link_to 'Add Food', "/inventories/#{@inventory.id}/inventory_foods/new", class: "form-creatnew" %></button>
-<h2>Foods in Inventory:</h2>
 <div class="row">
     <% if @foods.length.positive?%>
     <table  class="table">

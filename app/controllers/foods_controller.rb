@@ -1,19 +1,20 @@
 # app/controllers/foods_controller.rb
 class FoodsController < ApplicationController
-  before_action :set_food, only: %i[show edit destroy]
+  before_action :set_food, only: [:show, :edit, :destroy]
 
   def index
     @foods = Food.all
   end
 
-  def show; end
+  def show
+  end
 
   def new
     @food = Food.new
   end
 
   def create
-    @food = Food.new(food_params)
+    @food = current_user.foods.build(food_params)
     if @food.save
       redirect_to foods_path, notice: 'Food was successfully created.'
     else
@@ -21,7 +22,8 @@ class FoodsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def destroy
     @food.destroy

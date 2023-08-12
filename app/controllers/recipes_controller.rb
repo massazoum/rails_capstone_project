@@ -10,7 +10,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-    # @foods = Food.all
     @recipe = Recipe.find(params[:id])
     @food = Food.new
     @foods = Food.joins(:recipe_foods).where(recipe_foods: { recipe_id: @recipe.id }).includes([:recipe_foods])
@@ -34,7 +33,8 @@ class RecipesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit 
+  end
 
   def update
     @recipe = Recipe.find(params[:id])

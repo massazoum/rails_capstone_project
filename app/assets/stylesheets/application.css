@@ -13,3 +13,243 @@
  *= require_tree .
  *= require_self
  */
+.form-Actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.table {
+  min-width: 90vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.table th,
+.table td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+.form-submitt {
+  background-color: #008cba;
+  color: #fff;
+  font-size: 13px;
+  padding: 7px;
+  margin: 3px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.get-started-button a {
+  text-decoration: none;
+  color: white;
+}
+
+.form-creatnew {
+  background-color: #002cba;
+  color: #fff;
+  font-size: 13px;
+  padding: 10px;
+  margin-left: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.form-submit {
+  background-color: #008cba;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-links a {
+  color: #666;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.cardrecipeName a {
+  text-decoration: none;
+}
+
+.form-submit:hover {
+  background-color: #006799;
+}
+
+.name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.btn-generate {
+  margin-right: 80vw;
+}
+
+.frameMain {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.recipediv {
+  display: flex;
+  justify-content: right;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.form-header {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Error Messages */
+.form-errors {
+  color: #c00;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.form-links {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.form-links a:hover {
+  color: #333;
+}
+
+.form-submitNamet {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cardrecipe {
+  display: flex;
+  flex-direction: row;
+  width: 95vw;
+  height: auto;
+  margin-top: 15px;
+  margin-left: 20px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 3px solid #12151a;
+}
+
+.cardrecipeBtn {
+  display: flex;
+  flex-direction: row;
+}
+
+.cardrecipeName {
+  color: black;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.cardrecipeDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 15px;
+}
+
+.inventorydiv {
+  display: flex;
+  justify-content: right;
+}
+
+.inventory_name {
+  display: flex;
+  justify-content: center;
+}
+
+.cooking_time {
+  margin-top: 20px;
+}
+
+.Public {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: auto;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.welcome-container {
+  text-align: center;
+  padding: 100px;
+}
+
+.welcome-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #008cba;
+}
+
+.welcome-message {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.get-started-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #008cba;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 18px;
+  margin-top: 20px;
+}

@@ -3,62 +3,6 @@
 <html>
 <head>
   <title>Recipe</title>
-  <style>
-  .form-Actions {
-  text-align: center;
-  margin-top: 20px;
-}
- .table {
-  min-width:  90vw;
-    margin-left:5vw;
-    margin-right:5vw;
-    border-collapse: collapse;
-    margin-top: 10px
-  }
-  .table th, .table td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
-  }
-.form-submitt {
-  background-color: #008cba;
-  color: #fff;
-  font-size: 13px;
-  padding :7px ;
-  margin :3px ;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.form-creatnew {
-  background-color: #002cba;
-  color: #fff;
-  font-size: 13px;
-  padding :7px ;
-  margin :3px ;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom : 20px ;
-}
-.form-submit:hover {
-  background-color: #006799;
-}
-.name {
-  display: flex;
-  flex-direction: row;
-  justify-content: center ;
-}
-.frameMain {
- display: flex;
- justify-content: space-between;
-}
-
-.recipediv {
-  display:flex ;
-  justify-content:right
-}
-  </style>
 </head>
 <body>
 <div class="name"> <h1><%= @recipe.name %></h1> </div>
@@ -102,6 +46,29 @@
 <% end %>
 <hr>
 <div class="recipediv">
+<%= button_tag 'Generate Shopping List', id: 'open-inventory-modal', class: 'btn btn-generate' %>
+
+<div id="My_MODAL_ID" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Select Inventory</h2>
+      <span class="close" id="close-inventory-modal">&times;</span>
+    </div>
+    <div class="modal-body">
+
+<%= form_tag select_inventory_path, method: :post, remote: true do %>
+        <%= label_tag :inventory_id, 'Select an Inventory Record' %>
+        <%= select_tag :inventory_id, options_from_collection_for_select(Inventory.all, :id, :name), prompt: 'Select an inventory record' %>
+        <%= hidden_field_tag :recipe_id, @recipe.id %>
+        <%= submit_tag 'Generate', class: 'btn btn-primary' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+
+
 <button class="add-ingredient"><%= link_to 'Add Ingredient', "/recipes/#{@recipe.id}/recipe_foods/new" %></button>
 </div>
 <div class="row">

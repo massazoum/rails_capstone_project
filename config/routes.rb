@@ -28,4 +28,7 @@ Rails.application.routes.draw do
   end
 get 'shopping_list', to: 'shopping_lists#index', as: :shopping_list
 resources :foods, except: [:update]
+
+post '/select_inventory/:id', to: 'select_inventory#update_inventory', as: 'select_inventory'
+
 end

@@ -3,53 +3,6 @@
 <html>
 <head>
   <title>Recipes</title>
-  <style>
-.form-Actions {
-  text-align: center;
-  margin-top: 20px;
-}
-
- .table {
-   min-width: 90vw;
-    margin-left:5vw;
-    margin-right:5vw;
-    border-collapse: collapse;
-    margin-top: 10px
-  }
-
-  .table th, .table td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
-  }
-
-.form-submitt {
-  background-color: #008cba;
-  color: #fff;
-  font-size: 13px;
-  padding :7px ;
-  margin :3px ;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.form-creatnew {
-  background-color: #002cba;
-  color: #fff;
-  font-size: 13px;
-  padding :7px ;
-  margin :3px ;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom : 20px ;
-}
-
-.form-submit:hover {
-  background-color: #006799;
-}
-</style>
 </head>
 <body >
 <% total_missing_food_items = @recipe_foods.sum { |recipe_food| recipe_food.quantity.to_i } %>

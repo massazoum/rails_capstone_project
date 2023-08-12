@@ -4,7 +4,7 @@ class InventoriesController < ApplicationController
   before_action :set_inventory, only: %i[show destroy]
 
   def index
-    @inventories = current_user.inventories.all
+    @inventories = current_user.inventories.includes([:user]).all
   end
 
   def new
